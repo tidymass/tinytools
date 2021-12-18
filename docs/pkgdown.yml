@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   contact_us: contact_us.html
   tinytools: tinytools.html
-last_built: 2021-11-28T07:46Z
+last_built: 2021-12-18T23:42Z
 urls:
   reference: https://tidymass.github.io/tinytools//reference
   article: https://tidymass.github.io/tinytools//articles
