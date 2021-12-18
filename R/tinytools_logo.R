@@ -15,6 +15,7 @@
 #' @importFrom stats p.adjust rgamma
 #' @importFrom utils data str
 #' @importFrom magrittr %>%
+#' @importFrom purrr map map2 walk
 #' @export
 #' @examples
 #' tinytools_logo()
