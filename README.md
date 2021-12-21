@@ -7,6 +7,10 @@
 [![Dependencies](https://tinyverse.netlify.com/badge/tinytools)](https://cran.r-project.org/package=tinytools)
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
+`tinytools` is a part of [tidymass](https://tidymass.github.io/tidymass/)
+
+-------
+
 ## About
 
 `tinytools` is a collections of useful tiny tools.
