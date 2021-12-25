@@ -41,7 +41,8 @@ Imports:
     readxl,
     rvest,
     xml2,
-    htmlwidgets
+    htmlwidgets,
+    leaflet
 License: GPL-2 | file LICENSE
 RoxygenNote: 7.1.1
 Suggests: 

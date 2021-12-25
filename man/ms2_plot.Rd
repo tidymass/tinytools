@@ -98,8 +98,6 @@ ms2_plot(spectrum1, spectrum2)
 ms2_plot(spectrum1, spectrum2, interactive_plot = TRUE)
 ms2_plot(spectrum1)
 ms2_plot(spectrum1, interactive_plot = TRUE)
-
-
 }
 \author{
 Xiaotao Shen

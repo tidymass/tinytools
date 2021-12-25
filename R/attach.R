@@ -1,6 +1,6 @@
 core <- c("magrittr")
 
-core_unloaded <- function() {
+tinytools_core_unloaded <- function() {
   search <- paste0("package:", core)
   core[!search %in% search()]
 }
@@ -20,19 +20,18 @@ same_library <- function(pkg) {
 }
 
 tinytools_attach <- function() {
-  to_load <- core_unloaded()
+  to_load <- tinytools_core_unloaded()
   if (length(to_load) == 0)
     return(invisible())
   
-  # msg(
-  #   cli::rule(
-  #     left = crayon::bold("Attaching packages"),
-  #     right = paste0("tinytools ", package_version("tinytools"))
-  #   ),
-  #   startup = TRUE
-  # )
+  msg(cli::rule(
+    left = crayon::bold("Attaching packages"),
+    right = paste0("tinytools ", tinytools_package_version("tinytools"))
+  ),
+  startup = TRUE)
   
-  versions <- vapply(to_load, package_version, character(1))
+  versions <-
+    vapply(to_load, tinytools_package_version, character(1))
   packages <- paste0(
     crayon::green(cli::symbol$tick),
     " ",
@@ -54,7 +53,7 @@ tinytools_attach <- function() {
   invisible()
 }
 
-package_version <- function(x) {
+tinytools_package_version <- function(x) {
   version <- as.character(unclass(utils::packageVersion(x))[[1]])
   
   if (length(version) > 3) {
@@ -64,65 +63,3 @@ package_version <- function(x) {
   paste0(version, collapse = ".")
 }
 
-
-msg <- function(..., startup = FALSE) {
-  if (startup) {
-    if (!isTRUE(getOption("tinytools.quiet"))) {
-      packageStartupMessage(text_col(...))
-    }
-  } else {
-    message(text_col(...))
-  }
-}
-
-text_col <- function(x) {
-  # If RStudio not available, messages already printed in black
-  if (!rstudioapi::isAvailable()) {
-    return(x)
-  }
-  
-  if (!rstudioapi::hasFun("getThemeInfo")) {
-    return(x)
-  }
-  
-  theme <- rstudioapi::getThemeInfo()
-  
-  if (isTRUE(theme$dark))
-    crayon::white(x)
-  else
-    crayon::black(x)
-  
-}
-
-#' List all packages in the tinytools
-#'
-#' @param include_self Include tinytools in the list?
-#' @export
-#' @examples
-#' tinytools_packages()
-tinytools_packages <- function(include_self = TRUE) {
-  raw <- utils::packageDescription("tinytools")$Imports
-  imports <- strsplit(raw, ",")[[1]]
-  parsed <- gsub("^\\s+|\\s+$", "", imports)
-  names <-
-    vapply(strsplit(parsed, "\\s+"), "[[", 1, FUN.VALUE = character(1))
-  
-  if (include_self) {
-    names <- c(names, "tinytools")
-  }
-  
-  names
-}
-
-invert <- function(x) {
-  if (length(x) == 0)
-    return()
-  stacked <- utils::stack(x)
-  tapply(as.character(stacked$ind), stacked$values, list)
-}
-
-
-style_grey <- function(level, ...) {
-  crayon::style(paste0(...),
-                crayon::make_style(grDevices::grey(level), grey = TRUE))
-}

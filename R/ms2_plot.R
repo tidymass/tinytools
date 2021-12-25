@@ -54,8 +54,7 @@
 #' ms2_plot(spectrum1, spectrum2, interactive_plot = TRUE)
 #' ms2_plot(spectrum1)
 #' ms2_plot(spectrum1, interactive_plot = TRUE)
-#' 
-#' 
+
 
 ms2_plot = function(spectrum1,
                     spectrum2,
