@@ -20,6 +20,6 @@ clear spec
 removeNoise
 }
 \examples{
-exp.spectrum = data.frame(mz = 1:10, intensity = 1:10)
+exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
 removeNoise(exp.spectrum)
 }

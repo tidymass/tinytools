@@ -14,5 +14,5 @@ Set work directory where Rproj object in.
 }
 \author{
 Xiaotao Shen
-\email{shenxt@163.com}
+\email{shenxt1990@outlook.com}
 }

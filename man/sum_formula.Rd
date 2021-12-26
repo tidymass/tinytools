@@ -13,15 +13,17 @@ sum_formula(formula = "C9H11NO2", adduct = "M-H2O+H")
 }
 \value{
 formula
-sum_formula(formula = "C9H11NO2", adduct = 'M+H')
-sum_formula(formula = "C9H11NO2", adduct = 'M+')
-sum_formula(formula = "C9H11NO2", adduct = 'M+CH3COOH')
-sum_formula(formula = "C9H11", adduct = 'M-H20')
 }
 \description{
 Get the total formula after add adduct.
 }
+\examples{
+sum_formula(formula = "C9H11NO2", adduct = "M+H")
+sum_formula(formula = "C9H11NO2", adduct = "M+")
+sum_formula(formula = "C9H11NO2", adduct = "M+CH3COOH")
+sum_formula(formula = "C9H11", adduct = "M-H20")
+}
 \author{
 Xiaotao Shen
-\email{shenxt@stanford.edu}
+\email{shenxt1990@outlook.com}
 }

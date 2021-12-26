@@ -12,7 +12,10 @@ inder.
 \description{
 Open current work directory.
 }
+\examples{
+openwd()
+}
 \author{
 Xiaotao Shen
-\email{shenxt@163.com}
+\email{shenxt1990@outlook.com}
 }

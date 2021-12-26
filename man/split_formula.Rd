@@ -20,5 +20,5 @@ split_formula(formula = "C9H11NO2")
 }
 \author{
 Xiaotao Shen
-\email{shenxt@stanford.edu}
+\email{shenxt1990@outlook.com}
 }

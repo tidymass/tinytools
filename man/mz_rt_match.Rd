@@ -33,11 +33,11 @@ result of data1 and database.
 Match peaks according to m/z and RT.
 }
 \examples{
-data1 = data.frame(mz = 1:10, rt = 1:10)
-data2 = data.frame(mz = 1:10, rt = 1:10)
+data1 <- data.frame(mz = 1:10, rt = 1:10)
+data2 <- data.frame(mz = 1:10, rt = 1:10)
 mz_rt_match(data1, data2, mz.tol = 10)
 }
 \author{
 Xiaotao Shen
-\email{shenxt@sioc.ac.cn}
+\email{shenxt1990@outlook.com}
 }

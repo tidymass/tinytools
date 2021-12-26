@@ -22,7 +22,7 @@ ms2 match data frame
 ms2Match
 }
 \examples{
-exp.spectrum = data.frame(mz = 1:10, intensity = 1:10)
-lib.spectrum = data.frame(mz = 1:10, intensity = 1:10)
+exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
+lib.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
 ms2Match(exp.spectrum, lib.spectrum)
 }

@@ -1,7 +1,7 @@
 #' @title tinytools_logo
 #' @description Get the detailed of metPath package.
 #' @author Xiaotao Shen
-#' \email{shenxt@@stanford.edu}
+#' \email{shenxt1990@@outlook.com}
 #' @importFrom stringr str_replace str_split str_replace_all str_trim
 #' @importFrom dplyr filter mutate select everything
 #' @importFrom rstudioapi isAvailable hasFun getThemeInfo
@@ -27,28 +27,24 @@
 #' @return tinytools logo
 #' @examples
 #' tinytools_logo()
-
 tinytools_logo <- function() {
-  cat(crayon::green("Thank you for using tinytools!\n"))
-  cat(crayon::green("Version 0.9.1 (20211106)\n"))
-  cat(
-    crayon::green(
-      "More information can be found at https://tidymass.github.io/tinytools/\n"
-    )
-  )
-  cat(crayon::green(
-    c(
-      "  _   _          _______          _     ",
-      " | | (_)        |__   __|        | |    ",
-      " | |_ _ _ __  _   _| | ___   ___ | |___ ",
-      " | __| | '_ \\| | | | |/ _ \\ / _ \\| / __|",
-      " | |_| | | | | |_| | | (_) | (_) | \\__ \\",
-      "  \\__|_|_| |_|\\__, |_|\\___/ \\___/|_|___/",
-      "               __/ |                    ",
-      "              |___/                     "
-    )
-    
-  ), sep = "\n")
+    cat(crayon::green("Thank you for using tinytools!\n"))
+    cat(crayon::green("Version 0.99.1 (2021-12-26)\n"))
+    cat(crayon::green(
+        "More information: search 'tidymass tinytools'\n"
+    ))
+    cat(crayon::green(
+        c(
+            "  _   _          _______          _     ",
+            " | | (_)        |__   __|        | |    ",
+            " | |_ _ _ __  _   _| | ___   ___ | |___ ",
+            " | __| | '_ \\| | | | |/ _ \\ / _ \\| / __|",
+            " | |_| | | | | |_| | | (_) | (_) | \\__ \\",
+            "  \\__|_|_| |_|\\__, |_|\\___/ \\___/|_|___/",
+            "               __/ |                    ",
+            "              |___/                     "
+        )
+    ), sep = "\n")
 }
 
 

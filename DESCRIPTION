@@ -1,6 +1,6 @@
 Package: tinytools
 Type: Package
-Title: All the usefull tools from Xiaotao Shen
+Title: All the usefull tools for MS data processing and analysis
 Version: 0.99.1
 Date: 2021-11-06
 Authors@R: c(
@@ -54,7 +54,9 @@ Suggests:
     BiocStyle,
     RUnit,
     BiocGenerics,
-    tidyverse
+    tidyverse,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Note:
 biocViews: Metabolomics, MassSpectrometry
+Config/testthat/edition: 3

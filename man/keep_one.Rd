@@ -17,7 +17,14 @@ Return a result without multiple vs. one.
 \description{
 Remove multiple vs. one in result from mz_rt_match function.
 }
+\examples{
+data1 <- data.frame(mz = 1:10, rt = 1:10)
+data2 <- data.frame(mz = 1:10, rt = 1:10)
+result <- mz_rt_match(data1, data2, mz.tol = 10)
+
+keep_one(result)
+}
 \author{
 Xiaotao Shen
-\email{shenxt@sioc.ac.cn}
+\email{shenxt1990@outlook.com}
 }

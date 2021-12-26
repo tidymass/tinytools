@@ -33,7 +33,22 @@ A data frame.
 \description{
 Translate metabolite ID.
 }
+\examples{
+trans_ID(
+    query = "C00001",
+    from = "KEGG",
+    to = "PubChem SID",
+    top = 1,
+    server = "cts.fiehnlab"
+)
+
+trans_ID(
+    query = "C00001",
+    to = "Human Metabolome Database",
+    server = "cts.fiehnlab"
+)
+}
 \author{
 Xiaotao Shen
-\email{shenxt1990@163.com}
+\email{shenxt1990@outlook.com}
 }

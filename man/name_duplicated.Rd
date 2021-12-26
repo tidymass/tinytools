@@ -17,10 +17,10 @@ name_duplicated
 }
 \examples{
 name_duplicated(c("a", "a", "b", "c", "a", "b", "c", "a"))
-name_duplicated(c(rep(1,5), 2))
+name_duplicated(c(rep(1, 5), 2))
 name_duplicated(1:5)
 }
 \author{
 Xiaotao Shen
-\email{shenxt1990@163.com}
+\email{shenxt1990@outlook.com}
 }

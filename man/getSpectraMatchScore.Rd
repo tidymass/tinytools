@@ -36,7 +36,7 @@ spectrum match score
 getSpectraMatchScore
 }
 \examples{
-exp.spectrum = data.frame(mz = 1:10, intensity = 1:10)
-lib.spectrum = data.frame(mz = 1:10, intensity = 1:10)
+exp.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
+lib.spectrum <- data.frame(mz = 1:10, intensity = 1:10)
 getSpectraMatchScore(exp.spectrum, lib.spectrum)
 }

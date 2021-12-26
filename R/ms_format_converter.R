@@ -12,7 +12,7 @@
 #' #'
 #' #' @name convertMSFiles
 #' NULL
-#' 
+#'
 #' MSFileExtensions <- function()
 #' {
 #'   list(thermo = "raw",
@@ -23,13 +23,13 @@
 #'        mzXML = "mzXML",
 #'        mzML = "mzML")
 #' }
-#' 
+#'
 #' MSFileFormatIsDir <- function(format, ext)
 #' {
 #'   # UNDONE: is agilent .d also a directory?
 #'   return((format == "bruker" && ext == "d") || (format == "waters" && ext == "raw"))
 #' }
-#' 
+#'
 #' #' @details \code{MSFileFormats} returns a \code{character} with all supported
 #' #'   input formats (see below).
 #' #' @param vendor If \code{TRUE} only vendor formats are returned.
@@ -39,66 +39,66 @@
 #' {
 #'   checkmate::assertChoice(algorithm, c("pwiz", "openms", "bruker"))
 #'   checkmate::assertFlag(vendor)
-#'   
+#'
 #'   if (algorithm == "pwiz")
 #'     ret <- names(MSFileExtensions())
 #'   else if (algorithm == "openms")
 #'     ret <- c("mzXML", "mzML")
 #'   else # algorithm == "bruker"
 #'     ret <- "bruker"
-#'   
+#'
 #'   if (vendor)
 #'     ret <- setdiff(ret, c("mzXML", "mzML"))
-#'   
+#'
 #'   return(ret)
 #' }
-#' 
-#' 
-#' 
+#'
+#'
+#'
 #' filterMSFileDirs <- function(files, from)
 #' {
 #'   if (length(files) == 0)
 #'     return(files)
-#'   
+#'
 #'   allFromExts <- MSFileExtensions()[from]
 #'   keep <- sapply(files, function(file)
 #'   {
 #'     fExt <- tools::file_ext(file)
-#'     
+#'
 #'     fromExts <- pruneList(lapply(allFromExts, function(f) f[f %in% fExt]), checkEmptyElements = TRUE)
 #'     if (length(fromExts) == 0)
 #'       return(FALSE)
-#'     
+#'
 #'     fromCheck <- names(fromExts)
 #'     shouldBeDir <- mapply(fromCheck, fromExts, SIMPLIFY = TRUE,
 #'                           FUN = function(format, exts) sapply(exts, MSFileFormatIsDir, format = format))
-#'     
+#'
 #'     if (!allSame(shouldBeDir))
 #'       return(TRUE) # can be either
-#'     
+#'
 #'     isDir <- file.info(file, extra_cols = FALSE)$isdir
 #'     if (all(shouldBeDir))
 #'       return(isDir)
 #'     return(!isDir)
 #'   })
-#'   
-#'   return(files[keep])    
+#'
+#'   return(files[keep])
 #' }
-#' 
-#' 
-#' 
+#'
+#'
+#'
 #' listMSFiles <- function(dirs, from)
 #' {
 #'   allExts <- MSFileExtensions()
 #'   allExts <- unique(unlist(allExts[from]))
-#'   
+#'
 #'   files <- list.files(dirs, full.names = TRUE, pattern = paste0("*\\.", allExts, "$", collapse = "|"),
 #'                       ignore.case = TRUE)
-#'   
+#'
 #'   return(filterMSFileDirs(files, from))
 #' }
-#' 
-#' 
+#'
+#'
 #' convertMSFilesPWiz <- function(inFiles, outFiles, to, centroid, filters, extraOpts, PWizBatchSize)
 #' {
 #'   if (centroid != FALSE)
@@ -107,30 +107,30 @@
 #'       filters <- character()
 #'     filters <- c(paste("peakPicking", if (is.character(centroid)) centroid else ""), filters)
 #'   }
-#'   
+#'
 #'   mainArgs <- paste0("--", to)
 #'   if (!is.null(filters))
 #'     mainArgs <- c(mainArgs, sapply(filters, function(f) c("--filter", f)))
 #'   if (!is.null(extraOpts))
 #'     mainArgs <- c(mainArgs, extraOpts)
-#'   
+#'
 #'   pwpath <- findPWizPath()
 #'   if (is.null(pwpath) || !file.exists(file.path(pwpath, paste0("msconvert", if (Sys.info()[["sysname"]] == "Windows") ".exe" else ""))))
 #'     stop("Could not find ProteoWizard. You may set its location in the patRoon.path.pwiz option. See ?patRoon for more details.")
 #'   msc <- file.path(pwpath, "msconvert")
-#'   
+#'
 #'   if (PWizBatchSize != 1 && length(inFiles) > 1)
 #'   {
 #'     outDir <- dirname(outFiles)
 #'     if (!allSame(outDir)) # UNDONE?
 #'       stop("If PWizBatchSize>1 then all output files must go to the same directory.")
 #'     outDir <- outDir[1]
-#'     
+#'
 #'     if (PWizBatchSize == 0)
 #'       batches <- list(seq_along(inFiles))
 #'     else
 #'       batches <- splitInBatches(seq_along(inFiles), PWizBatchSize)
-#'     
+#'
 #'     cmdQueue <- lapply(seq_along(batches), function(bi)
 #'     {
 #'       input <- tempfile("msconvert")
@@ -151,18 +151,18 @@
 #'                            "-o", dirname(outFiles[fi]), mainArgs)))
 #'     })
 #'   }
-#'   
+#'
 #'   executeMultiProcess(cmdQueue, function(cmd) {}, logSubDir = "convert")
-#'   
+#'
 #'   invisible(NULL)
 #' }
-#' 
+#'
 #' convertMSFilesOpenMS <- function(inFiles, outFiles, to, extraOpts)
 #' {
 #'   mainArgs <- c()
 #'   if (!is.null(extraOpts))
 #'     mainArgs <- c(mainArgs, extraOpts)
-#'   
+#'
 #'   msc <- getCommandWithOptPath("FileConverter", "OpenMS")
 #'   cmdQueue <- lapply(seq_along(inFiles), function(fi)
 #'   {
@@ -171,24 +171,24 @@
 #'     return(list(logFile = logf, command = msc,
 #'                 args = c("-in", inFiles[fi], "-out", outFiles[fi], mainArgs)))
 #'   })
-#'   
+#'
 #'   executeMultiProcess(cmdQueue, function(cmd) {}, logSubDir = "convert")
-#'   
+#'
 #'   invisible(NULL)
 #' }
-#' 
+#'
 #' convertMSFilesBruker <- function(inFiles, outFiles, to, centroid)
 #' {
 #'   # expConstant <- if (to == "mzXML") DAConstants$daMzXML else if (to == "mzData") DAConstants$daMzData else DAConstants$daMzML
 #'   expConstant <- if (to == "mzXML") DAConstants$daMzXML else DAConstants$daMzML
 #'   expSpecConstant <- if (centroid) DAConstants$daLine else DAConstants$daProfile
-#'   
+#'
 #'   DA <- getDAApplication()
 #'   hideDAInScope()
-#'   
+#'
 #'   fCount <- length(inFiles)
 #'   prog <- openProgBar(0, fCount)
-#'   
+#'
 #'   for (i in seq_len(fCount))
 #'   {
 #'     ind <- getDAFileIndex(DA, inFiles[i], NULL)
@@ -196,15 +196,15 @@
 #'       warning(paste("Failed to open file in DataAnalysis:", inFiles[i]))
 #'     else
 #'       DA[["Analyses"]][[ind]]$Export(outFiles[i], expConstant, expSpecConstant)
-#'     
+#'
 #'     setTxtProgressBar(prog, i)
 #'   }
-#'   
+#'
 #'   setTxtProgressBar(prog, fCount)
-#'   
+#'
 #'   invisible(NULL)
 #' }
-#' 
+#'
 #' #' @details \code{convertMSFiles} converts the data format of an analysis to
 #' #'   another. It uses tools from
 #' #'   \href{http://proteowizard.sourceforge.net/}{ProteoWizard}
@@ -319,12 +319,12 @@
 #'   checkmate::assertCharacter(extraOpts, null.ok = TRUE, add = ac)
 #'   checkmate::assertCount(PWizBatchSize, add = ac)
 #'   checkmate::reportAssertions(ac)
-#'   
+#'
 #'   if (centroid != FALSE && algorithm == "openms")
 #'     stop("Centroiding with OpenMS is currently not supported.")
 #'   else if ((centroid == "vendor" || centroid == "cwt") && algorithm != "pwiz")
 #'     stop("Vendor/cwt centroiding is only supported when algorithm=\"pwiz\"")
-#'   
+#'
 #'   if (dirs || !is.null(anaInfo)) # from arg needs to be used?
 #'   {
 #'     if (algorithm == "pwiz")
@@ -334,29 +334,29 @@
 #'       from <- checkmate::matchArg(from, c("mzXML", "mzML"), several.ok = FALSE, add = ac)
 #'     else # bruker
 #'       from <- checkmate::matchArg(from, "bruker", add = ac)
-#'     
+#'
 #'     if (from == to)
 #'       stop("Input and output formats are the same")
 #'   }
-#'   
+#'
 #'   anaInfo <- assertAndPrepareAnaInfo(anaInfo, from, null.ok = !is.null(files), add = ac)
-#'   
+#'
 #'   if (!is.null(files))
 #'   {
 #'     if (dirs)
 #'     {
 #'       dirs <- files[file.info(files, extra_cols = FALSE)$isdir]
-#'       
+#'
 #'       if (MSFileFormatIsDir(from))
 #'         dirs <- dirs[!grepl(sprintf("(\\.%s)$", MSFileExtensions()[[from]]), files)] # filter out analyses "files" (are actually directories)
-#'       
+#'
 #'       dirFiles <- listMSFiles(dirs, from)
 #'       files <- union(dirFiles, setdiff(files, dirs))
 #'     }
 #'   }
 #'   else
 #'     files <- character()
-#'   
+#'
 #'   if (!is.null(anaInfo))
 #'   {
 #'     ext <- MSFileExtensions()[[from]]
@@ -365,20 +365,20 @@
 #'     afiles <- filterMSFileDirs(afiles, from)
 #'     files <- c(files, afiles)
 #'   }
-#'   
+#'
 #'   if (is.null(outPath))
 #'     outPath <- dirname(files)
-#'   
+#'
 #'   mkdirp(outPath)
-#'   
+#'
 #'   # NOTE: use normalizePath() here to convert to backslashes on Windows: needed by msconvert
 #'   outPath <- normalizePath(rep(outPath, length.out = length(files)), mustWork = TRUE)
 #'   files <- normalizePath(files, mustWork = FALSE) # no mustWork, file existence will be checked later
-#'   
+#'
 #'   basef <- basename(tools::file_path_sans_ext(files))
 #'   output <- normalizePath(file.path(outPath, paste0(basef, ".", to)),
 #'                           mustWork = FALSE)
-#'   
+#'
 #'   keepFiles <- sapply(seq_along(files), function(fi)
 #'   {
 #'     if (!file.exists(files[fi]))
@@ -389,12 +389,12 @@
 #'       return(TRUE)
 #'     return(FALSE)
 #'   }, USE.NAMES = FALSE)
-#'   
+#'
 #'   if (is.logical(keepFiles) && any(keepFiles))
 #'   {
 #'     files <- files[keepFiles]
 #'     output <- output[keepFiles]
-#'     
+#'
 #'     if (algorithm == "pwiz")
 #'       convertMSFilesPWiz(files, output, to, centroid, filters, extraOpts, PWizBatchSize)
 #'     else if (algorithm == "openms")

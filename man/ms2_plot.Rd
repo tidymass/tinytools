@@ -66,34 +66,34 @@ Return a MS2 spectrum.
 Plot ms2 spectra or ms2 match plot.
 }
 \examples{
-spectrum1 = data.frame(
-mz = c(
-  87.50874,
-  94.85532,
-  97.17808,
-  97.25629,
-  103.36186,
-  106.96647,
-  107.21461,
-  111.00887,
-  113.79269,
-  118.70564
-),
-intensity =
-  c(
-    8356.306,
-    7654.128,
-    9456.207,
-    8837.188,
-    8560.228,
-    8746.359,
-    8379.361,
-    169741.797,
-    7953.080,
-    8378.066
-  )
+spectrum1 <- data.frame(
+    mz = c(
+        87.50874,
+        94.85532,
+        97.17808,
+        97.25629,
+        103.36186,
+        106.96647,
+        107.21461,
+        111.00887,
+        113.79269,
+        118.70564
+    ),
+    intensity =
+        c(
+            8356.306,
+            7654.128,
+            9456.207,
+            8837.188,
+            8560.228,
+            8746.359,
+            8379.361,
+            169741.797,
+            7953.080,
+            8378.066
+        )
 )
-spectrum2 = spectrum1
+spectrum2 <- spectrum1
 ms2_plot(spectrum1, spectrum2)
 ms2_plot(spectrum1, spectrum2, interactive_plot = TRUE)
 ms2_plot(spectrum1)
@@ -101,5 +101,5 @@ ms2_plot(spectrum1, interactive_plot = TRUE)
 }
 \author{
 Xiaotao Shen
-\email{shenxt@sioc.ac.cn}
+\email{shenxt1990@outlook.com}
 }
