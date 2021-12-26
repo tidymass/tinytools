@@ -7,7 +7,8 @@
 trans_id_database(server = c("cts.fiehnlab", "chemspider"))
 }
 \arguments{
-\item{server}{server. cts.fiehnlab (http://cts.fiehnlab.ucdavis.edu/service/convert)
+\item{server}{server. cts.fiehnlab 
+(http://cts.fiehnlab.ucdavis.edu/service/convert)
 or chemspider (https://www.chemspider.com/InChI.asmx)}
 }
 \value{
@@ -17,10 +18,7 @@ A vector..
 Whate databases are supported.
 }
 \examples{
-\dontrun{
-trans_id_database(server = "http://cts.fiehnlab.ucdavis.edu/service/convert")
-trans_id_database(server = "https://www.chemspider.com/InChI.asmx")
-}
+trans_id_database(server = "cts.fiehnlab")
 }
 \author{
 Xiaotao Shen

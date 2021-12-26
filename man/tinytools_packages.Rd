@@ -9,6 +9,9 @@ tinytools_packages(include_self = TRUE)
 \arguments{
 \item{include_self}{Include tinytools in the list?}
 }
+\value{
+tinytools packages
+}
 \description{
 List all packages in the tinytools
 }

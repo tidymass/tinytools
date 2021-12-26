@@ -6,6 +6,9 @@
 \usage{
 get_os()
 }
+\value{
+os name
+}
 \description{
 Convert from wide data to long data.
 }

@@ -3,6 +3,7 @@
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @export
+#' @return noting
 
 setwd_win <- function() {
   x <- readline("Please paste the directory:")

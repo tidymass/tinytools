@@ -1,10 +1,11 @@
-##------------------------------------------------------------------------------
+##-----------------------------------------------------------------------
 #' @title get_os
 #' @description Convert from wide data to long data.
 #' @author Xiaotao Shen
 #' \email{shenxt@@stanford.edu}
 #' @export
-#' @examples 
+#' @return os name
+#' @examples
 #' get_os()
 
 get_os <- function() {

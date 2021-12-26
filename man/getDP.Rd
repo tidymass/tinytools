@@ -11,6 +11,12 @@ getDP(exp.int, lib.int)
 
 \item{lib.int}{lib.int}
 }
+\value{
+dot product
+}
 \description{
 getDP
+}
+\examples{
+getDP(exp.int = 1:10, lib.int = 1:10)
 }

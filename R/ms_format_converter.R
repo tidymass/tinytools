@@ -282,7 +282,7 @@
 #' #'   it was installed (see
 #' #'   \href{http://proteowizard.sourceforge.net/formats/index.html}{here}).
 #' #'
-#' #' @examples \dontrun{
+#' #' @examples \donttest{
 #' #' # Use FileConverter of OpenMS to convert between open mzXML/mzML format
 #' #' convertMSFiles("standard-1.mzXML", to = "mzML", algorithm = "openms")
 #' #'

@@ -1,4 +1,3 @@
-
 #' @title read_mgf
 #' @description Read MGF data.
 #' @author Xiaotao Shen
@@ -21,10 +20,10 @@ read_mgf = function(file) {
           grep('^\\d', x))
       info.mz <-
         lapply(mgf.data, function(x)
-          grep('^PEPMASS', x, value = T))
+          grep('^PEPMASS', x, value = TRUE))
       info.rt <-
         lapply(mgf.data, function(x)
-          grep('^RTINSECONDS', x, value = T))
+          grep('^RTINSECONDS', x, value = TRUE))
       
       info.mz <- unlist(info.mz)
       #for orbitrap data, the intensity of precursor ion should be removed
@@ -80,7 +79,7 @@ read_mgf = function(file) {
   
   spec.info <- ms2[[1]]
   if (length(ms2) > 1) {
-    for (i in 2:length(ms2)) {
+    for (i in seq_along(ms2)[-1]) {
       spec.info <- c(spec.info, ms2[[i]])
     }
   }
@@ -119,16 +118,3 @@ ListMGF = function(file) {
   }
   rec.list
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

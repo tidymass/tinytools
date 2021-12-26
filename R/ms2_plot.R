@@ -21,7 +21,7 @@
 #' @param interactive_plot Interactive plot or not.
 #' @return Return a MS2 spectrum.
 #' @export
-#' @examples 
+#' @examples
 #' spectrum1 = data.frame(
 #' mz = c(
 #'   87.50874,

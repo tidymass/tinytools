@@ -23,6 +23,9 @@ A classyfire class object.
 \description{
 Get the class information of a compound using classyfire.
 }
+\examples{
+get_compound_class()
+}
 \author{
 Xiaotao Shen
 \email{shenxt1990@163.com}

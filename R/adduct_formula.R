@@ -1,4 +1,4 @@
-##------------------------------------------------------------------------------
+##----------------------------------------------------------------------------
 #' @title sum_formula
 #' @description Get the total formula after add adduct.
 #' @author Xiaotao Shen
@@ -7,6 +7,7 @@
 #' @param adduct Adduct.
 #' @export
 #' @examples
+#' @return formula
 #' sum_formula(formula = "C9H11NO2", adduct = 'M+H')
 #' sum_formula(formula = "C9H11NO2", adduct = 'M+')
 #' sum_formula(formula = "C9H11NO2", adduct = 'M+CH3COOH')
@@ -87,7 +88,7 @@ sum_formula <-
       })
       
       formula <- do.call(rbind, formula)
-      formula <- formula[formula[, 2] != 0, ]
+      formula <- formula[formula[, 2] != 0,]
       colnames(formula) <- c("element.name", "number")
       if (any(formula$number < 0)) {
         return(NA)
@@ -105,7 +106,7 @@ sum_formula <-
   }
 
 
-##------------------------------------------------------------------------------
+##---------------------------------------------------------------------------
 #' @title split_formula
 #' @description Split a formula into element and number.
 #' @author Xiaotao Shen
@@ -121,7 +122,7 @@ split_formula <-
     temp.formula <- strsplit(formula, split = "")[[1]]
     
     number <- NULL
-    for (i in 1:length(temp.formula)) {
+    for (i in seq_along(temp.formula)) {
       if (length(grep("[0-9]{1}", temp.formula[i])) == 0) {
         break
       }
@@ -144,7 +145,7 @@ split_formula <-
       double.letter.element <- NULL
       double.number <- NULL
       remove.idx <- NULL
-      for (i in 1:length(idx1)) {
+      for (i in seq_along(idx1)) {
         double.letter.element[i] <-
           substr(formula, idx1[i], idx1[i] + len1[i] - 1)
         if (nchar(double.letter.element[i]) == 2) {
@@ -178,14 +179,15 @@ split_formula <-
       len2 <- attributes(idx2)$match.length
       one.letter.element <- NULL
       one.number <- NULL
-      for (i in 1:length(idx2)) {
+      for (i in seq_along(idx2)) {
         one.letter.element[i] <-
           substr(formula1, idx2[i], idx2[i] + len2[i] - 1)
         if (nchar(one.letter.element[i]) == 1) {
           one.number[i] <- 1
         } else{
           one.number[i] <-
-            as.numeric(substr(one.letter.element[i], 2, nchar(one.letter.element[i])))
+            as.numeric(substr(one.letter.element[i], 2,
+                              nchar(one.letter.element[i])))
         }
         one.letter.element[i] <- substr(one.letter.element[i], 1, 1)
       }
@@ -198,9 +200,9 @@ split_formula <-
     formula <- rbind(double.formula, one.formula)
     formula <-
       formula[!apply(formula, 1, function(x)
-        any(is.na(x))), ]
+        any(is.na(x))),]
     
-    formula <- formula[order(formula$element.name), ]
+    formula <- formula[order(formula$element.name),]
     formula$number <- formula$number * number
     unique.element <- unique(formula$element.name)
     if (length(unique.element) == nrow(formula)) {

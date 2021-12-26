@@ -18,9 +18,9 @@ name_duplicated = function(x) {
   duplicated_x =
     unique(x[duplicated(x)])
   
-  for(i in 1:length(duplicated_x)){
+  for (i in seq_along(duplicated_x)) {
     y = duplicated_x[i]
-    x[which(x == y)] = paste(y, 1:length(x[which(x == y)]), sep = "_")
+    x[which(x == y)] = paste(y, seq_along(x[which(x == y)]), sep = "_")
   }
   x
 }

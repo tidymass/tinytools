@@ -62,4 +62,3 @@ tinytools_package_version <- function(x) {
   }
   paste0(version, collapse = ".")
 }
-

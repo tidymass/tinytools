@@ -23,7 +23,8 @@ Supported database can be shown using trans_id_database("to").}
 
 \item{top}{How many results should be returned?}
 
-\item{server}{server. cts.fiehnlab (http://cts.fiehnlab.ucdavis.edu/service/convert)
+\item{server}{server. cts.fiehnlab
+(http://cts.fiehnlab.ucdavis.edu/service/convert)
 or chemspider (https://www.chemspider.com/InChI.asmx)}
 }
 \value{

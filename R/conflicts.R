@@ -4,11 +4,13 @@
 #' and other packages that you have loaded.
 #'
 #' There are four conflicts that are deliberately ignored: \code{intersect},
-#' \code{union}, \code{setequal}, and \code{setdiff} from dplyr. These functions
+#' \code{union}, \code{setequal}, and \code{setdiff} from dplyr.
+#' These functions
 #' make the base equivalents generic, so shouldn't negatively affect any
 #' existing code.
 #'
 #' @export
+#' @return conflict information
 #' @examples
 #' tinytools_conflicts()
 tinytools_conflicts <- function() {
@@ -28,27 +30,30 @@ tinytools_conflicts <- function() {
 }
 
 tinytools_conflict_message <- function(x) {
-  if (length(x) == 0) return("")
+  if (length(x) == 0)
+    return("")
   
-  header <- cli::rule(
-    left = crayon::bold("Conflicts"),
-    right = "tinytools_conflicts()"
-  )
+  header <- cli::rule(left = crayon::bold("Conflicts"),
+                      right = "tinytools_conflicts()")
   
   pkgs <- x %>% purrr::map(~ gsub("^package:", "", .))
   others <- pkgs %>% purrr::map(`[`, -1)
-  other_calls <- purrr::map2_chr(
-    others, names(others),
-    ~ paste0(crayon::blue(.x), "::", .y, "()", collapse = ", ")
-  )
+  other_calls <- purrr::map2_chr(others,
+                                 names(others),
+                                 ~ paste0(crayon::blue(.x),
+                                          "::", .y, "()", collapse = ", "))
   
   winner <- pkgs %>% purrr::map_chr(1)
-  funs <- format(paste0(crayon::blue(winner), "::", crayon::green(paste0(names(x), "()"))))
-  bullets <- paste0(
-    crayon::red(cli::symbol$cross), " ", funs,
-    " masks ", other_calls,
-    collapse = "\n"
-  )
+  funs <-
+    format(paste0(crayon::blue(winner), "::", crayon::green(paste0(names(
+      x
+    ), "()"))))
+  bullets <- paste0(crayon::red(cli::symbol$cross),
+                    " ",
+                    funs,
+                    " masks ",
+                    other_calls,
+                    collapse = "\n")
   
   paste0(header, "\n", bullets)
 }

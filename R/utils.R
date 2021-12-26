@@ -1,4 +1,3 @@
-
 msg <- function(..., startup = FALSE) {
   if (startup) {
     if (!isTRUE(getOption("tinytools.quiet"))) {
@@ -32,6 +31,7 @@ text_col <- function(x) {
 #'
 #' @param include_self Include tinytools in the list?
 #' @export
+#' @return tinytools packages
 #' @examples
 #' tinytools_packages()
 tinytools_packages <- function(include_self = TRUE) {
@@ -62,9 +62,8 @@ style_grey <- function(level, ...) {
 }
 
 
-
-
-###getSpectraMatchScore is used to get two MS2 spectra match score, see MS-DIAL
+###getSpectraMatchScore is used to get
+###two MS2 spectra match score, see MS-DIAL
 #' @title getSpectraMatchScore
 #' @param exp.spectrum exp.spectrum
 #' @param lib.spectrum lib.spectrum
@@ -73,7 +72,12 @@ style_grey <- function(level, ...) {
 #' @param fraction.weight fraction.weight
 #' @param dp.forward.weight dp.forward.weight
 #' @param dp.reverse.weight dp.reverse.weight
+#' @return spectrum match score
 #' @export
+#' @examples
+#' exp.spectrum = data.frame(mz = 1:10, intensity = 1:10)
+#' lib.spectrum = data.frame(mz = 1:10, intensity = 1:10)
+#' getSpectraMatchScore(exp.spectrum, lib.spectrum)
 getSpectraMatchScore <- function(exp.spectrum,
                                  lib.spectrum,
                                  ppm.tol = 30,
@@ -103,12 +107,15 @@ getSpectraMatchScore <- function(exp.spectrum,
   dp.forward <- getDP(exp.int = match.matrix$Exp.intensity,
                       lib.int = match.matrix$Lib.intensity)
   dp.reverse <-
-    getDP(exp.int = match.matrix$Exp.intensity[which(match.matrix$Lib.intensity > 0)],
-          lib.int = match.matrix$Lib.intensity[which(match.matrix$Lib.intensity > 0)])
+    getDP(exp.int =
+            match.matrix$Exp.intensity[which(match.matrix$Lib.intensity > 0)],
+          lib.int =
+            match.matrix$Lib.intensity[which(match.matrix$Lib.intensity > 0)])
   dp.forward[is.na(dp.forward)] <- 0
   dp.reverse[is.na(dp.reverse)] <- 0
   score <-
-    dp.forward * dp.forward.weight + dp.reverse * dp.reverse.weight + fraction * fraction.weight
+    dp.forward * dp.forward.weight + dp.reverse * dp.reverse.weight +
+    fraction * fraction.weight
   return(score)
 }
 
@@ -119,14 +126,22 @@ getSpectraMatchScore <- function(exp.spectrum,
 #' @title getDP
 #' @param exp.int exp.int
 #' @param lib.int lib.int
+#' @return dot product
 #' @export
+#' @examples
+#' getDP(exp.int = 1:10, lib.int = 1:10)
+
 getDP <- function(exp.int, lib.int) {
-  exp.weight <- sapply(exp.int, function(x) {
+  exp.weight <- lapply(exp.int, function(x) {
     1 / (1 + x / (sum(exp.int) - 0.5))
-  })
-  lib.weight <- sapply(lib.int, function(x) {
+  }) %>%
+    unlist()
+  
+  lib.weight <- lapply(lib.int, function(x) {
     1 / (1 + x / (sum(lib.int) - 0.5))
-  })
+  }) %>%
+    unlist()
+  
   x <- exp.weight * exp.int
   y <- lib.weight * lib.int
   return(sum(x * y) ^ 2 / (sum(x ^ 2) * sum(y ^ 2)))
@@ -140,6 +155,11 @@ getDP <- function(exp.int, lib.int) {
 #' @param ppm.tol ppm.tol
 #' @param mz.ppm.thr mz.ppm.thr
 #' @export
+#' @return ms2 match data frame
+#' @examples 
+#' exp.spectrum = data.frame(mz = 1:10, intensity = 1:10)
+#' lib.spectrum = data.frame(mz = 1:10, intensity = 1:10)
+#' ms2Match(exp.spectrum, lib.spectrum)
 
 ms2Match <- function(exp.spectrum,
                      lib.spectrum,
@@ -153,7 +173,8 @@ ms2Match <- function(exp.spectrum,
                               ppm.ms2match = ppm.tol,
                               mz.ppm.thr = mz.ppm.thr)
   
-  ##for each fragment in lib.spectrum, its matched fragments index in exp.spectrum
+  ##for each fragment in lib.spectrum,
+  ##its matched fragments index in exp.spectrum
   match.idx <- lapply(lib.spectrum$mz, function(x) {
     diff.mz <- abs(x - exp.spectrum$mz)
     x[x < mz.ppm.thr] <- mz.ppm.thr
@@ -203,19 +224,24 @@ ms2Match <- function(exp.spectrum,
 }
 
 
-###for a spectrum, if two fragments with the similar m/z, the fragment with the low fragment should be removed from
+###for a spectrum, if two fragments with the similar m/z,
+###the fragment with the low fragment should be removed from
 ##the spectrum
 #' @title removeNoise
 #' @param spec spec
 #' @param ppm.ms2match ppm.ms2match
 #' @param mz.ppm.thr mz.ppm.thr
+#' @return clear spec
 #' @export
+#' @examples 
+#' exp.spectrum = data.frame(mz = 1:10, intensity = 1:10)
+#' removeNoise(exp.spectrum)
 removeNoise <- function(spec,
                         ppm.ms2match = 30,
                         mz.ppm.thr = 400) {
   if (nrow(spec) == 1)
     return(spec)
-  spec <- spec[order(spec[, 1]),]
+  spec <- spec[order(spec[, 1]), ]
   mz <- spec[, 1]
   mz <- mz[-1]
   diff.mz <- diff(spec[, 1])
@@ -239,12 +265,13 @@ removeNoise <- function(spec,
 # findPWizPath <- function() {
 #   # try to find ProteoWizard
 #   # order: options --> win registry --> PATH
-#   # the PATH is searched last because OpenMS might have added its own old version.
-#   
+#   # the PATH is searched last because
+#    OpenMS might have added its own old version.
+#
 #   path <- getOption("patRoon.path.pwiz")
 #   if (!is.null(path) && nzchar(path))
 #     return(path)
-#   
+#
 #   if (Sys.info()[["sysname"]] == "Windows")
 #   {
 #     # Inspired by scan_registry_for_rtools() from pkgload
@@ -255,7 +282,7 @@ removeNoise <- function(spec,
 #         error = function(e)
 #           NULL
 #       )
-#     
+#
 #     # not sure if this might occur
 #     if (is.null(reg))
 #       reg <-
@@ -264,7 +291,7 @@ removeNoise <- function(spec,
 #         error = function(e)
 #           NULL
 #       )
-#     
+#
 #     if (!is.null(reg))
 #     {
 #       path <-
@@ -279,7 +306,7 @@ removeNoise <- function(spec,
 #         return(path)
 #     }
 #   }
-#   
+#
 #   # check PATH
 #   msc <-
 #     if (Sys.info()[["sysname"]] == "Windows")
@@ -289,6 +316,6 @@ removeNoise <- function(spec,
 #   path <- dirname(Sys.which(msc))
 #   if (nzchar(path))
 #     return(path)
-#   
+#
 #   return(NULL)
 # }

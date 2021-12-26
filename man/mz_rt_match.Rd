@@ -26,10 +26,16 @@ and seconod column must be rt.}
 \item{rt.error.type}{RT error is calculated with relative or absolute.}
 }
 \value{
-Return a result which give the matching result of data1 and database.
+Return a result which give the matching
+result of data1 and database.
 }
 \description{
 Match peaks according to m/z and RT.
+}
+\examples{
+data1 = data.frame(mz = 1:10, rt = 1:10)
+data2 = data.frame(mz = 1:10, rt = 1:10)
+mz_rt_match(data1, data2, mz.tol = 10)
 }
 \author{
 Xiaotao Shen

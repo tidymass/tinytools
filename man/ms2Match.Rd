@@ -15,6 +15,14 @@ ms2Match(exp.spectrum, lib.spectrum, ppm.tol = 30, mz.ppm.thr = 400)
 
 \item{mz.ppm.thr}{mz.ppm.thr}
 }
+\value{
+ms2 match data frame
+}
 \description{
 ms2Match
+}
+\examples{
+exp.spectrum = data.frame(mz = 1:10, intensity = 1:10)
+lib.spectrum = data.frame(mz = 1:10, intensity = 1:10)
+ms2Match(exp.spectrum, lib.spectrum)
 }

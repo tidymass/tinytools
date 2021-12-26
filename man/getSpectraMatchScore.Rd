@@ -29,6 +29,14 @@ getSpectraMatchScore(
 
 \item{dp.reverse.weight}{dp.reverse.weight}
 }
+\value{
+spectrum match score
+}
 \description{
 getSpectraMatchScore
+}
+\examples{
+exp.spectrum = data.frame(mz = 1:10, intensity = 1:10)
+lib.spectrum = data.frame(mz = 1:10, intensity = 1:10)
+getSpectraMatchScore(exp.spectrum, lib.spectrum)
 }

@@ -9,8 +9,13 @@
 #' @param mz.tol mz tol for ms1 and ms2 data matching.
 #' @param rt.tol RT tol for ms1 and ms2 data matching.
 #' @param rt.error.type RT error is calculated with relative or absolute.
-#' @return Return a result which give the matching result of data1 and database.
+#' @return Return a result which give the matching
+#' result of data1 and database.
 #' @export
+#' @examples
+#' data1 = data.frame(mz = 1:10, rt = 1:10)
+#' data2 = data.frame(mz = 1:10, rt = 1:10)
+#' mz_rt_match(data1, data2, mz.tol = 10)
 
 mz_rt_match =
   function(data1,
@@ -57,14 +62,14 @@ mz_rt_match =
       result <- mapply(function(x, y) {
         list(cbind(x, y))
       },
-      x <- 1:length(info1),
+      x <- seq_along(info1),
       y = result)
       result <- do.call(rbind, result)
     }
     
     result <-
       matrix(result[which(!apply(result, 1, function(x)
-        any(is.na(x)))), ], ncol = 8)
+        any(is.na(x)))),], ncol = 8)
     if (nrow(result) == 0)
       return(NULL)
     colnames(result) <-
@@ -89,18 +94,27 @@ mz_rt_match =
 #' @param according.to According to mz error or rt error?
 #' @return Return a result without multiple vs. one.
 #' @export
+#' @example 
+#' data1 = data.frame(mz = 1:10, rt = 1:10)
+#' data2 = data.frame(mz = 1:10, rt = 1:10)
+#' result = mz_rt_match(data1, data2, mz.tol = 10)
+#' 
+#' keep_one(result)
 
 keep_one = function(result,
                     according.to = c("mz.error", "rt.error")) {
   according.to <- match.arg(according.to)
   if (is.null(result))
     return(result)
-  if (class(result) != "matrix" &
-      class(result) != "data.frame")
+  
+  if (!is.matrix(result) & !is.data.frame(result)) {
     stop("result must be matrix or data.frame.")
+  }
+  
   if (ncol(result) != 8)
     stop("result must from mz_rt_match.")
-  if (paste(colnames(result), collapse = ";") != "index1;index2;mz1;mz2;mz.error;rt1;rt2;rt.error") {
+  if (paste(colnames(result), collapse = ";") !=
+      "Index1;Index2;mz1;mz2;mz error;rt1;rt2;rt error") {
     stop("result must from mz_rt_match.")
   }
   
@@ -108,19 +122,19 @@ keep_one = function(result,
   if (length(duplicated.idx) == 0)
     return(result)
   
-  for (i in 1:length(duplicated.idx)) {
+  for (i in seq_along(duplicated.idx)) {
     temp.idx <- which(result$index1 == duplicated.idx[i])
-    temp.result <- result[temp.idx, ]
+    temp.result <- result[temp.idx,]
     if (according.to == "mz.error") {
       temp.idx1 <- temp.idx[which.min(temp.result$mz.error)]
       temp.idx2 <- setdiff(temp.idx, temp.idx1)
-      result <- result[-temp.idx2, ]
+      result <- result[-temp.idx2,]
     }
     
     if (according.to == "rt.error") {
       temp.idx1 <- temp.idx[which.min(temp.result$rt.error)]
       temp.idx2 <- setdiff(temp.idx, temp.idx1)
-      result <- result[-temp.idx2, ]
+      result <- result[-temp.idx2,]
     }
     
   }

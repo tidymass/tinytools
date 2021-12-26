@@ -8,22 +8,23 @@
 #'@param to The databases of metabolites.
 #'Supported database can be shown using trans_id_database("to").
 #'@param top How many results should be returned?
-#'@param server server. cts.fiehnlab (http://cts.fiehnlab.ucdavis.edu/service/convert)
+#'@param server server. cts.fiehnlab
+#'(http://cts.fiehnlab.ucdavis.edu/service/convert)
 #'or chemspider (https://www.chemspider.com/InChI.asmx)
 #'@return A data frame.
 #'@export
-#'@examples 
+#'@examples
 #'trans_ID(query = "C00001",
 #' from = "KEGG",
 #' to = "PubChem SID",
 #' top = 1,
 #' server = "cts.fiehnlab)
-#' 
+#'
 # trans_ID(query = "C00001",
 # to = "Human Metabolome Database",
 # server = "cts.fiehnlab")
-#' 
-#' 
+#'
+#'
 
 trans_ID = function(query = "C00001",
                     from = "KEGG",
@@ -54,7 +55,8 @@ trans_ID = function(query = "C00001",
     if (any(class(result) %in% "try-error")) {
       warning(
         'Please check you query, from and to again.
-        You can use trans_id_database() function to check the databases this package support.'
+        You can use trans_id_database() function to
+        check the databases this package support.'
       )
       result <- NA
     } else{
@@ -64,7 +66,7 @@ trans_ID = function(query = "C00001",
               rvest::html_text(trim = TRUE) %>%
               stringr::str_split("\n") %>%
               `[[`(1) %>%
-              sapply(function(x) {
+              lapply(function(x) {
                 x <- stringr::str_trim(x, "both")
                 x <-
                   stringr::str_replace_all(string = x,
@@ -76,10 +78,12 @@ trans_ID = function(query = "C00001",
                                            replacement = "")
                 x
               }) %>%
+              unlist() %>%
               unname() %>%
               data.frame(name = ., stringsAsFactors = FALSE) %>%
               dplyr::filter(!name %in% c("[", "]", "{", "}", "result:")) %>%
-              dplyr::filter(!stringr::str_detect(name, "fromIdentifier|searchTerm|toIdentifier")) %>%
+              dplyr::filter(!stringr::str_detect(name,
+                                                 "fromIdentifier|searchTerm|toIdentifier")) %>%
               dplyr::pull(name))
       
       if (any(class(result) %in% "try-error")) {
@@ -178,15 +182,13 @@ trans_ID = function(query = "C00001",
 #' @description Whate databases are supported.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
-#' @param server server. cts.fiehnlab (http://cts.fiehnlab.ucdavis.edu/service/convert)
+#' @param server server. cts.fiehnlab 
+#' (http://cts.fiehnlab.ucdavis.edu/service/convert)
 #'or chemspider (https://www.chemspider.com/InChI.asmx)
 #' @return A vector..
 #' @export
 #' @examples
-#' \dontrun{
-#' trans_id_database(server = "http://cts.fiehnlab.ucdavis.edu/service/convert")
-#' trans_id_database(server = "https://www.chemspider.com/InChI.asmx")
-#' }
+#' trans_id_database(server = "cts.fiehnlab")
 
 trans_id_database = function(server = c("cts.fiehnlab",
                                         "chemspider")) {
@@ -198,8 +200,10 @@ trans_id_database = function(server = c("cts.fiehnlab",
   }
   
   if (server == "http://cts.fiehnlab.ucdavis.edu/service/convert") {
-    chemical_database_from = xml2::read_html("http://cts.fiehnlab.ucdavis.edu/service/conversion/fromValues")
-    chemical_database_to = xml2::read_html("http://cts.fiehnlab.ucdavis.edu/service/conversion/toValues")
+    chemical_database_from =
+      xml2::read_html("http://cts.fiehnlab.ucdavis.edu/service/conversion/fromValues")
+    chemical_database_to =
+      xml2::read_html("http://cts.fiehnlab.ucdavis.edu/service/conversion/toValues")
     
     chemical_database_from <-
       chemical_database_from %>%
@@ -207,7 +211,7 @@ trans_id_database = function(server = c("cts.fiehnlab",
       rvest::html_text(TRUE) %>%
       stringr::str_split(pattern = "\n") %>%
       `[[`(1) %>%
-      sapply(function(x) {
+      lapply(function(x) {
         x <- stringr::str_trim(x, "both")
         x <-
           stringr::str_replace_all(string = x,
@@ -218,6 +222,7 @@ trans_id_database = function(server = c("cts.fiehnlab",
                                    pattern = ',',
                                    replacement = "")
       }) %>%
+      unlist() %>%
       unname() %>%
       data.frame(name = ., stringsAsFactors = FALSE) %>%
       dplyr::filter(!name %in% c("[", "]", "{", "}")) %>%
@@ -230,7 +235,7 @@ trans_id_database = function(server = c("cts.fiehnlab",
       rvest::html_text(TRUE) %>%
       stringr::str_split(pattern = "\n") %>%
       `[[`(1) %>%
-      sapply(function(x) {
+      lapply(function(x) {
         x <- stringr::str_trim(x, "both")
         x <-
           stringr::str_replace_all(string = x,
@@ -241,6 +246,7 @@ trans_id_database = function(server = c("cts.fiehnlab",
                                    pattern = ',',
                                    replacement = "")
       }) %>%
+      unlist() %>%
       unname() %>%
       data.frame(name = ., stringsAsFactors = FALSE) %>%
       dplyr::filter(!name %in% c("[", "]", "{", "}")) %>%
@@ -252,13 +258,15 @@ trans_id_database = function(server = c("cts.fiehnlab",
     cat(
       crayon::green(
         length(chemical_database_from),
-        "databases are supported in server http://cts.fiehnlab.ucdavis.edu/service/convert for 'from'.\n"
+        "databases are supported in server
+        http://cts.fiehnlab.ucdavis.edu/service/convert for 'from'.\n"
       )
     )
     cat(
       crayon::green(
         length(chemical_database_to),
-        "databases are supported in server http://cts.fiehnlab.ucdavis.edu/service/convert for 'to'.\n"
+        "databases are supported in server
+        http://cts.fiehnlab.ucdavis.edu/service/convert for 'to'.\n"
       )
     )
     result <-

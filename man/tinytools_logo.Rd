@@ -6,6 +6,9 @@
 \usage{
 tinytools_logo()
 }
+\value{
+tinytools logo
+}
 \description{
 Get the detailed of metPath package.
 }

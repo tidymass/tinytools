@@ -5,6 +5,6 @@
 #' @return inder.
 #' @export
 
-openwd <- function(){
+openwd <- function() {
   system(sprintf('open %s', shQuote(getwd())))
 }

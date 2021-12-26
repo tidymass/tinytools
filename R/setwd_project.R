@@ -7,6 +7,7 @@
 #' @importFrom stringr str_split
 #' @importFrom utils head
 #' @importFrom utils tail
+#' @return nothing
 #' @export
 
 setwd_project <- function() {
@@ -30,7 +31,7 @@ setwd_project <- function() {
   candidate_wd <-
     rev(candidate_wd)
   
-  for (i in 1:length(candidate_wd)) {
+  for (i in seq_along(candidate_wd)) {
     wd <- candidate_wd[[i]]
     file_name <-
       list.files(wd,

@@ -13,6 +13,13 @@ removeNoise(spec, ppm.ms2match = 30, mz.ppm.thr = 400)
 
 \item{mz.ppm.thr}{mz.ppm.thr}
 }
+\value{
+clear spec
+}
 \description{
 removeNoise
+}
+\examples{
+exp.spectrum = data.frame(mz = 1:10, intensity = 1:10)
+removeNoise(exp.spectrum)
 }

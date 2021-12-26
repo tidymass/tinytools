@@ -6,6 +6,9 @@
 \usage{
 setwd_win()
 }
+\value{
+noting
+}
 \description{
 Set work directory in windows.
 }

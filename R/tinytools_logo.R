@@ -7,28 +7,45 @@
 #' @importFrom rstudioapi isAvailable hasFun getThemeInfo
 #' @importFrom utils packageDescription write.csv
 #' @importFrom cli rule symbol
-#' @importFrom crayon green blue col_align red black white style make_style num_colors
+#' @importFrom crayon green blue col_align
+#' @importFrom crayon red black white style make_style num_colors
 #' @importFrom plotly ggplotly
 #' @importFrom pbapply pblapply
 #' @import ggplot2
+#' @importFrom plyr dlply .
+#' @import readxl
 #' @importFrom methods .hasSlot new
 #' @importFrom stats p.adjust rgamma
 #' @importFrom utils data str
 #' @importFrom magrittr %>%
 #' @importFrom purrr map map2 walk
+#' @import htmltools
+#' @import htmlwidgets
+#' @import leaflet
+#' @import tidyr
 #' @export
+#' @return tinytools logo
 #' @examples
 #' tinytools_logo()
 
-tinytools_logo <- function(){
+tinytools_logo <- function() {
   cat(crayon::green("Thank you for using tinytools!\n"))
   cat(crayon::green("Version 0.9.1 (20211106)\n"))
-  cat(crayon::green("More information can be found at https://tidymass.github.io/tinytools/\n"))
+  cat(
+    crayon::green(
+      "More information can be found at https://tidymass.github.io/tinytools/\n"
+    )
+  )
   cat(crayon::green(
-    c("  _   _          _______          _     ", " | | (_)        |__   __|        | |    ", 
-      " | |_ _ _ __  _   _| | ___   ___ | |___ ", " | __| | '_ \\| | | | |/ _ \\ / _ \\| / __|", 
-      " | |_| | | | | |_| | | (_) | (_) | \\__ \\", "  \\__|_|_| |_|\\__, |_|\\___/ \\___/|_|___/", 
-      "               __/ |                    ", "              |___/                     "
+    c(
+      "  _   _          _______          _     ",
+      " | | (_)        |__   __|        | |    ",
+      " | |_ _ _ __  _   _| | ___   ___ | |___ ",
+      " | __| | '_ \\| | | | |/ _ \\ / _ \\| / __|",
+      " | |_| | | | | |_| | | (_) | (_) | \\__ \\",
+      "  \\__|_|_| |_|\\__, |_|\\___/ \\___/|_|___/",
+      "               __/ |                    ",
+      "              |___/                     "
     )
     
   ), sep = "\n")
