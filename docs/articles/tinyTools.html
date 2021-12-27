@@ -34,6 +34,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -46,18 +48,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tinytools</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Under development">0.9.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Help documents
@@ -67,32 +63,37 @@
   <ul class="dropdown-menu" role="menu">
 <li class="dropdown-header">metflow</li>
     <li>
-      <a href="http://metflow.zhulab.cn/">Web Server for Metabolomics Data Cleaning and Differential Metabolite Discovery</a>
+      <a href="http://metflow.zhulab.cn/" class="external-link">Web Server for Metabolomics Data Cleaning and Differential Metabolite Discovery</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">metflow2</li>
+    </li>
+<li class="dropdown-header">metflow2</li>
     <li>
-      <a href="https://tidymass.github.io/metflow2/">Mass spectrometry raw data processing and data cleaning</a>
+      <a href="https://tidymass.github.io/metflow2/" class="external-link">Mass spectrometry raw data processing and data cleaning</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">MetNormalizer</li>
+    </li>
+<li class="dropdown-header">MetNormalizer</li>
     <li>
-      <a href="https://tidymass.github.io/MetNormalizer/">Metabolomimcs data normalization</a>
+      <a href="https://tidymass.github.io/MetNormalizer/" class="external-link">Metabolomimcs data normalization</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">metID</li>
+    </li>
+<li class="dropdown-header">metID</li>
     <li>
-      <a href="https://tidymass.github.io/metID/">Database construction and metabolite annotation</a>
+      <a href="https://tidymass.github.io/metID/" class="external-link">Database construction and metabolite annotation</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">MetDNA</li>
+    </li>
+<li class="dropdown-header">MetDNA</li>
     <li>
-      <a href="http://metdna.zhulab.cn/">Metabolite identification and Dysregulated Network Analysis</a>
+      <a href="http://metdna.zhulab.cn/" class="external-link">Metabolite identification and Dysregulated Network Analysis</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">lipidflow</li>
+    </li>
+<li class="dropdown-header">lipidflow</li>
     <li>
-      <a href="https://tidymass.github.io/lipidflow/">Absolute quantification for lipidomics</a>
+      <a href="https://tidymass.github.io/lipidflow/" class="external-link">Absolute quantification for lipidomics</a>
     </li>
   </ul>
 </li>
@@ -108,30 +109,28 @@
       <a href="../articles/tinytools.html">Version 0.4.0</a>
     </li>
     <li class="divider">
-    <li>
+    </li>
+<li>
       <a href="../news/index.html">Change log</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="../articles/contact_us.html">Contact us</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../articles/tinytools.html">Get started</a>
+  <a href="../articles/contact_us.html">Contact us</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/tidymass/tinytools/">
+  <a href="https://github.com/tidymass/tinytools/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://twitter.com/JasperShen1990">
+  <a href="https://twitter.com/JasperShen1990" class="external-link">
     <span class="fab fa-twitter fa-lg"></span>
      
   </a>
@@ -152,13 +151,13 @@
 
       
 
-      </header><script src="tinyTools_files/header-attrs-2.9/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>tinytools</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/tidymass/tinytools/blob/master/vignettes/tinytools.Rmd"><code>vignettes/tinytools.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/tidymass/tinytools/blob/HEAD/vignettes/tinytools.Rmd" class="external-link"><code>vignettes/tinytools.Rmd</code></a></small>
       <div class="hidden name"><code>tinytools.Rmd</code></div>
 
     </div>
@@ -166,57 +165,60 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymass/tinytools">tinytools</a></span><span class="op">)</span>
-<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tinytools 0.9.1 ──</span>
-<span class="co">#&gt; ✓ magrittr 2.0.1</span>
-<span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tinytools_conflicts() ──</span>
-<span class="co">#&gt; x methods::body&lt;-()    masks base::body&lt;-()</span>
-<span class="co">#&gt; x methods::kronecker() masks base::kronecker()</span></code></pre></div>
-<div id="compound-id-converter" class="section level2">
-<h2 class="hasAnchor">
-<a href="#compound-id-converter" class="anchor"></a><strong>Compound ID converter</strong>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymass/tinytools" class="external-link">tinytools</a></span><span class="op">)</span>
+<span class="co">#&gt; ── <span style="font-weight: bold;">Attaching packages</span> ────────────────────────────────────── tinytools 0.99.1 ──</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">magrittr</span> 2.0.1</span>
+<span class="co">#&gt; ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── tinytools_conflicts() ──</span>
+<span class="co">#&gt; <span style="color: #BB0000;">x</span> <span style="color: #0000BB;">methods</span>::<span style="color: #00BB00;">body&lt;-()</span>    masks <span style="color: #0000BB;">base</span>::body&lt;-()</span>
+<span class="co">#&gt; <span style="color: #BB0000;">x</span> <span style="color: #0000BB;">methods</span>::<span style="color: #00BB00;">kronecker()</span> masks <span style="color: #0000BB;">base</span>::kronecker()</span></code></pre></div>
+<div class="section level2">
+<h2 id="compound-id-converter">
+<strong>Compound ID converter</strong><a class="anchor" aria-label="anchor" href="#compound-id-converter"></a>
 </h2>
 <p>Two web tools are used for compound compound convert.</p>
-<div id="cts-fiehnlab" class="section level3">
-<h3 class="hasAnchor">
-<a href="#cts-fiehnlab" class="anchor"></a><strong>1. cts.fiehnlab</strong>
+<div class="section level3">
+<h3 id="cts-fiehnlab">
+<strong>1. cts.fiehnlab</strong><a class="anchor" aria-label="anchor" href="#cts-fiehnlab"></a>
 </h3>
-<p>cts.fiehnlab is <a href="http://cts.fiehnlab.ucdavis.edu/service/convert" class="uri">http://cts.fiehnlab.ucdavis.edu/service/convert</a>. It support a lot of databases.</p>
+<p>cts.fiehnlab is <a href="http://cts.fiehnlab.ucdavis.edu/service/convert" class="external-link uri">http://cts.fiehnlab.ucdavis.edu/service/convert</a>. It support a lot of databases.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymass/tinytools">tinytools</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymass/tinytools" class="external-link">tinytools</a></span><span class="op">)</span></code></pre></div>
 <p>We can use the <code><a href="../reference/trans_id_database.html">trans_id_database()</a></code> to get the databases that cts.fiehnlab.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">database_name</span> <span class="op">=</span> <span class="fu"><a href="../reference/trans_id_database.html">trans_id_database</a></span><span class="op">(</span>server <span class="op">=</span> <span class="st">"cts.fiehnlab"</span><span class="op">)</span>
-<span class="co">#&gt; 226 databases are supported in server http://cts.fiehnlab.ucdavis.edu/service/convert for 'from'.</span>
-<span class="co">#&gt; 227 databases are supported in server http://cts.fiehnlab.ucdavis.edu/service/convert for 'to'.</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #00BB00;">226 databases are supported in server</span></span>
+<span class="co"><span style="color: #00BB00;">#&gt;         http://cts.fiehnlab.ucdavis.edu/service/convert for 'from'.</span></span>
+<span class="co"><span style="color: #00BB00;">#&gt; 227 databases are supported in server</span></span>
+<span class="co"><span style="color: #00BB00;">#&gt;         http://cts.fiehnlab.ucdavis.edu/service/convert for 'to'.</span></span>
+<span class="co"><span style="color: #00BB00;">#&gt; </span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">database_name</span><span class="op">$</span><span class="va">From</span><span class="op">$</span><span class="va">From</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">database_name</span><span class="op">$</span><span class="va">From</span><span class="op">$</span><span class="va">From</span><span class="op">)</span>
 <span class="co">#&gt; [1] "AAA Chemistry"     "ABBLIS Chemicals"  "Abbott Labs"      </span>
 <span class="co">#&gt; [4] "ABI Chem"          "AbMole Bioscience" "Acesobio"</span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">database_name</span><span class="op">$</span><span class="va">To</span><span class="op">$</span><span class="va">From</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">database_name</span><span class="op">$</span><span class="va">To</span><span class="op">$</span><span class="va">From</span><span class="op">)</span>
 <span class="co">#&gt; [1] "AAA Chemistry"     "ABBLIS Chemicals"  "Abbott Labs"      </span>
 <span class="co">#&gt; [4] "ABI Chem"          "AbMole Bioscience" "Acesobio"</span></code></pre></div>
 <p>We can see that it support a lot of (&gt; 200) databases.</p>
 <p>We can try the most common convert, from KEGG to HMDB.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/trans_ID.html">trans_ID</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tinytools/man/trans_ID%20(1).html" class="external-link">trans_ID</a></span><span class="op">(</span>
   query <span class="op">=</span> <span class="st">"C00001"</span>,
   from <span class="op">=</span> <span class="st">"KEGG"</span>,
   to <span class="op">=</span> <span class="st">"Human Metabolome Database"</span>,
   top <span class="op">=</span> <span class="fl">1</span>,
   server <span class="op">=</span> <span class="st">"cts.fiehnlab"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 × 2</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 2</span></span>
 <span class="co">#&gt;   KEGG   `Human Metabolome Database`</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;                      </span>
-<span class="co">#&gt; 1 C00001 HMDB0002111</span></code></pre></div>
-<p>Now, <code>trans_ID</code> doesn’t support verctor query. So you can use the <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map()</a></code> to achive this.</p>
+<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> C00001 HMDB0002111</span></code></pre></div>
+<p>Now, <code>trans_ID</code> doesn’t support verctor query. So you can use the <code><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">purrr::map()</a></code> to achive this.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"C00001"</span>, <span class="st">"C00001"</span>, <span class="st">"C00001"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"C00001"</span>, <span class="st">"C00001"</span>, <span class="st">"C00001"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span>
     .f <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
-      <span class="fu"><a href="../reference/trans_ID.html">trans_ID</a></span><span class="op">(</span>
+      <span class="fu"><a href="https://rdrr.io/pkg/tinytools/man/trans_ID%20(1).html" class="external-link">trans_ID</a></span><span class="op">(</span>
         query <span class="op">=</span> <span class="va">x</span>,
         from <span class="op">=</span> <span class="st">"KEGG"</span>,
         to <span class="op">=</span> <span class="st">"Human Metabolome Database"</span>,
@@ -225,22 +227,23 @@
       <span class="op">)</span>
     <span class="op">}</span>
   <span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">.</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">.</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt;     KEGG Human Metabolome Database</span>
 <span class="co">#&gt; 1 C00001               HMDB0002111</span>
 <span class="co">#&gt; 2 C00001               HMDB0002111</span>
 <span class="co">#&gt; 3 C00001               HMDB0002111</span></code></pre></div>
 </div>
-<div id="chemspider" class="section level3">
-<h3 class="hasAnchor">
-<a href="#chemspider" class="anchor"></a><strong>2. chemspider</strong>
+<div class="section level3">
+<h3 id="chemspider">
+<strong>2. chemspider</strong><a class="anchor" aria-label="anchor" href="#chemspider"></a>
 </h3>
-<p>This is from <a href="https://www.chemspider.com/InChI.asmx" class="uri">https://www.chemspider.com/InChI.asmx</a>.</p>
+<p>This is from <a href="https://www.chemspider.com/InChI.asmx" class="external-link uri">https://www.chemspider.com/InChI.asmx</a>.</p>
 <p>We can use the <code><a href="../reference/trans_id_database.html">trans_id_database()</a></code> to get the databases that chemspider</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">database_name2</span> <span class="op">=</span> <span class="fu"><a href="../reference/trans_id_database.html">trans_id_database</a></span><span class="op">(</span>server <span class="op">=</span> <span class="st">"chemspider"</span><span class="op">)</span>
-<span class="co">#&gt; 9 are supported in server https://www.chemspider.com/InChI.asmx.</span></code></pre></div>
+<span class="co">#&gt; <span style="color: #00BB00;">9 are supported in server https://www.chemspider.com/InChI.asmx.</span></span>
+<span class="co"><span style="color: #00BB00;">#&gt; </span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">database_name2</span><span class="op">$</span><span class="va">From</span>
 <span class="co">#&gt; [1] "csid"     "inchikey" "inchikey" "inchikey" "inchi"    "inchi"    "inchi"   </span>
@@ -251,19 +254,19 @@
 <span class="co">#&gt; [8] "smiles"   "inchi"</span></code></pre></div>
 <p>This is very useful if you want to get the inchikey, inchi or smiles for one compound. But this web only support “ChemSpider ID” (csid), so we need use cts.fiehnlab convert to csid first.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/trans_ID.html">trans_ID</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tinytools/man/trans_ID%20(1).html" class="external-link">trans_ID</a></span><span class="op">(</span>
   query <span class="op">=</span> <span class="st">"C00001"</span>,
   from <span class="op">=</span> <span class="st">"KEGG"</span>,
   to <span class="op">=</span> <span class="st">"ChemSpider"</span>,
   top <span class="op">=</span> <span class="fl">1</span>,
   server <span class="op">=</span> <span class="st">"cts.fiehnlab"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 × 2</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 2</span></span>
 <span class="co">#&gt;   KEGG   ChemSpider</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;     </span>
-<span class="co">#&gt; 1 C00001 140526</span></code></pre></div>
+<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> C00001 140526</span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/trans_ID.html">trans_ID</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tinytools/man/trans_ID%20(1).html" class="external-link">trans_ID</a></span><span class="op">(</span>
   query <span class="op">=</span> <span class="st">"140526"</span>,
   from <span class="op">=</span> <span class="st">"csid"</span>,
   to <span class="op">=</span> <span class="st">"mol"</span>,
@@ -286,11 +289,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Xiaotao Shen, Chuchu Wang.</p>
+  <p></p>
+<p>tinytools Developed by Xiaotao Shen, Chuchu Wang. <br> from <i class="fa fa-university"></i> Stanford University <br><i class="fa fa-clinic-medical"></i>School of Medicine <br><i class="fa fa-dna"></i> Genetics Department</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p><b>Contact Us:</b> <br><i class="fa fa-envelope"></i> <a href="mailto:shenxt1990@outlook.com" class="email">shenxt1990@outlook.com</a> <br><i class="fa fa-weixin"></i> <a href="https://www.shenxt.info/files/wechat_QR.jpg" class="external-link">shenxt1990</a> <br><i class="fa fa-network-wired"></i> <a href="https://tidymass.github.io/tidymass/" class="external-link">A part of tidymass</a></p>
 </div>
 
       </footer>

@@ -1,81 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://tidymass.github.io/tinytools//index.html</loc>
+    <loc>https://tidymass.github.io/tinytools/404.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/convert2long.html</loc>
+    <loc>https://tidymass.github.io/tinytools/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/convert2wide.html</loc>
+    <loc>https://tidymass.github.io/tinytools/articles/contact_us.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/getDP.html</loc>
+    <loc>https://tidymass.github.io/tinytools/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/getSpectraMatchScore.html</loc>
+    <loc>https://tidymass.github.io/tinytools/articles/tinyTools.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/get_compound_class.html</loc>
+    <loc>https://tidymass.github.io/tinytools/authors.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/get_os.html</loc>
+    <loc>https://tidymass.github.io/tinytools/index.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/get_worklist.html</loc>
+    <loc>https://tidymass.github.io/tinytools/news/index.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/keep_one.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/convert2long.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/ms2Match.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/convert2wide.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/ms2_plot.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/getDP.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/mz_rt_match.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/getSpectraMatchScore.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/name_duplicated.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/get_compound_class.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/openwd.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/get_os.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/removeNoise.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/get_worklist.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/setwd_project.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/setwd_win.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/keep_one.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/split_formula.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/ms2Match.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/sum_formula.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/ms2_plot.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/tinytools_conflicts.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/mz_rt_match.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/tinytools_logo.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/name_duplicated.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/tinytools_packages.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/openwd.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/trans_ID.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/read_mgf.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//reference/trans_id_database.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/removeNoise.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//articles/contact_us.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/setwd_project.html</loc>
   </url>
   <url>
-    <loc>https://tidymass.github.io/tinytools//articles/tinytools.html</loc>
+    <loc>https://tidymass.github.io/tinytools/reference/setwd_win.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/tinytools/reference/split_formula.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/tinytools/reference/sum_formula.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/tinytools/reference/tinyTools_logo.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/tinytools/reference/tinyTools_packages.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/tinytools/reference/tinytools_conflicts.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/tinytools/reference/trans_ID (1).html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/tinytools/reference/trans_ID.html</loc>
+  </url>
+  <url>
+    <loc>https://tidymass.github.io/tinytools/reference/trans_id_database.html</loc>
   </url>
 </urlset>
